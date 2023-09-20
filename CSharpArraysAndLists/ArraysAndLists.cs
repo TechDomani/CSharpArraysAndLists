@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -47,40 +48,66 @@ namespace CSharpArraysAndLists
 			return result.Trim(',');
 		}
 
-
-		public static void UsingArrays()
+		public static void ArraysAreReferenceTypes(double[] doubles)
 		{
-			
-
-			int[] numbersB = { 4, 6, 8, 12, 9 };
-			Console.WriteLine(string.Join(",", numbersB));
-
-			// They can have multiple dimensions
-			int[,] coordinatesA = new int[2, 2];
-			coordinatesA[0, 0] = 1;
-			coordinatesA[0, 1] = 3;
-			Console.WriteLine(PrintCoordinates(coordinatesA));
-
-			int[,] coordinatesB = { { 1, 3 }, { 2, 4 } };
-			Console.WriteLine(PrintCoordinates(coordinatesB));
+			Console.WriteLine("Arrays are reference types");
+			for (int i = 0; i<doubles.Length; i++)
+			{
+				doubles[i] = doubles[i] * 2;
+			}
 		}
 
-		public static string PrintCoordinates(int[,] coordinates)
+		public static void TwoDimensionalArray()
+		{
+			// Create a noughts and crosses board 
+			char[,] board = new char[3, 3];
+			// Using the first dimension as the x coordinate and the second dimension as the y coordinate (could be the other way round)
+			board[1, 1] = 'X';  // Player X makes the first move and goes for the centre
+			board[0, 2] = '0'; // Player 0 makes the second move and goes for top left
+			Console.WriteLine("The array type is: " + board.GetType().Name);
+			Console.WriteLine($"The total size of the board is {board.Length}");
+			Console.WriteLine($"The length of the first dimension is: {board.GetLength(0)}");
+			Console.WriteLine($"The length of the second dimension is: {board.GetLength(1)}");
+			PrintBoard(board);
+		}
+
+		private static void PrintBoard(char[,] input)
 		{
 			string ret = string.Empty;
-			for (int i = 0; i < coordinates.GetLength(0); i++)
+			for (int i = 0; i < input.GetLength(0); i++)
 			{
-				ret += "[";
-				for (int j = 0; j < coordinates.GetLength(1); j++)
+				for (int j = input.GetLength(1) - 1; j >= 0; j--)
 				{
-					ret += $"{coordinates[i, j]}, ";
+					char value = input[i, j] == char.MinValue ? '_' : input[i, j]; //Set '_' as default when printing
+					ret += $"{value} ";
 				}
-				ret = ret.TrimEnd(',', ' ') + "] ";
+				ret = ret.TrimEnd() + "\n";
 			}
-			return ret;
+			Console.WriteLine(ret);
 		}
 
+		public static void JaggedArray()
+		{
+			char[][] buttons = new char[7][];
+			buttons[0] = new [] {'a', 'b', 'c', 'd'};
+			buttons[1] = new[] { 'e', 'f', 'g', 'h' };
+			buttons[2] = new[] { 'i', 'j', 'k', 'l' };
+			buttons[3] = new[] { 'm', 'n', 'o', 'p' };
+			buttons[4] = new[] { 'q', 'r', 's', 't' };
+			buttons[5] = new[] { 'u', 'v', 'w', 'x' };
+			buttons[6] = new[] { 'y', 'z' }; // Not all the arrays need to be the same length
 
+			Console.WriteLine("The array type is: " + buttons.GetType().Name);
+			Console.WriteLine($"The number of rows is {buttons.Length}");
+
+			//Print the buttons
+			foreach (char[] row in buttons)
+			{
+				Console.WriteLine(string.Join(" ", row));
+			}
+			Console.WriteLine();
+		}
+	
 		// Creating Lists
 		public static void CreatingLists()
 		{
