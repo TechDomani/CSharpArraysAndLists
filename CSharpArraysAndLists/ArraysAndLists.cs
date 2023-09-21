@@ -53,9 +53,10 @@
 		{
 			// Create a noughts and crosses board 
 			char[,] board = new char[3, 3];
-			// Using the first dimension as the x coordinate and the second dimension as the y coordinate (could be the other way round)
+			// The first dimension represents the row number (starting from the top)
+			// The second dimension represents the column number
 			board[1, 1] = 'X';  // Player X makes the first move and goes for the centre
-			board[0, 2] = '0'; // Player 0 makes the second move and goes for top left
+			board[0, 2] = '0'; // Player 0 makes the second move and goes for the top right
 			Console.WriteLine("The array type is: " + board.GetType().Name);
 			Console.WriteLine($"The total size of the board is {board.Length}");
 			Console.WriteLine($"The length of the first dimension is: {board.GetLength(0)}");
@@ -68,7 +69,7 @@
 			string ret = string.Empty;
 			for (int i = 0; i < input.GetLength(0); i++)
 			{
-				for (int j = input.GetLength(1) - 1; j >= 0; j--)
+				for (int j = 0; j < input.GetLength(0); j++)
 				{
 					char value = input[i, j] == char.MinValue ? '_' : input[i, j]; //Set '_' as default when printing
 					ret += $"{value} ";
