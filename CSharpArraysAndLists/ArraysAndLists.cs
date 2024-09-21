@@ -53,8 +53,8 @@
 		{
 			// Create a noughts and crosses board 
 			char[,] board = new char[3, 3];
-			// The first dimension represents the row number (starting from the top)
-			// The second dimension represents the column number
+			// The first dimension represents the row
+			// The second dimension represents the column 
 			board[1, 1] = 'X';  // Player X makes the first move and goes for the centre
 			board[0, 2] = '0'; // Player 0 makes the second move and goes for the top right
 			Console.WriteLine("The array type is: " + board.GetType().Name);
@@ -62,7 +62,15 @@
 			Console.WriteLine($"The length of the first dimension is: {board.GetLength(0)}");
 			Console.WriteLine($"The length of the second dimension is: {board.GetLength(1)}");
 			PrintBoard(board);
+			Console.WriteLine();
+
+			// Note that curly rather than square brackets are used to initialise two dimensional arrays
+			int[,] numbers = { { 4, 5 }, { 9, 3 }, { 6, 2 }, { 8, 13 } };
+			Console.WriteLine($"A 4 x 2 array of integers: ");
+			Console.WriteLine($"The length of the first dimension is: {numbers.GetLength(0)}");
+			Console.WriteLine($"The length of the second dimension is: {numbers.GetLength(1)}");
 		}
+
 
 		private static void PrintBoard(char[,] input)
 		{
