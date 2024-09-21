@@ -81,15 +81,16 @@
 
 		public static void JaggedArray()
 		{
-			char[][] buttons = new char[7][];
-			buttons[0] = new [] {'a', 'b', 'c', 'd'};
-			buttons[1] = new[] { 'e', 'f', 'g', 'h' };
-			buttons[2] = new[] { 'i', 'j', 'k', 'l' };
-			buttons[3] = new[] { 'm', 'n', 'o', 'p' };
-			buttons[4] = new[] { 'q', 'r', 's', 't' };
-			buttons[5] = new[] { 'u', 'v', 'w', 'x' };
-			buttons[6] = new[] { 'y', 'z' }; // Not all the arrays need to be the same length
-
+			char[][] buttons =
+			[
+				['a', 'b', 'c', 'd'],
+				[ 'e', 'f', 'g', 'h' ],
+				[ 'i', 'j', 'k', 'l' ],
+				[ 'm', 'n', 'o', 'p' ],
+				[ 'q', 'r', 's', 't' ],
+				[ 'u', 'v', 'w', 'x' ],
+				[ 'y', 'z' ], // Not all the arrays need to be the same length
+			];
 			Console.WriteLine("The array type is: " + buttons.GetType().Name);
 			Console.WriteLine($"The number of rows is {buttons.Length}");
 
@@ -105,7 +106,7 @@
 		public static void CreatingLists()
 		{
 			// Lists are not fixed in size. They must be of one type
-			List<int> numbersA = new ();
+			List<int> numbersA = [];
 			Console.WriteLine("Initial values of numbersA: " + string.Join(", ", numbersA));
 			Console.WriteLine("The type is: " + numbersA.GetType());
 			numbersA.Add(12);
@@ -118,11 +119,11 @@
 			Console.WriteLine();
 
 			// You can have a list of lists
-			List<List<int>> coordinatesA = new List<List<int>>
-			{
-				new List<int> { 3, 5 },
-				new List<int> { 4, 7 }
-			};
+			List<List<int>> coordinatesA =
+			[
+				[ 3, 5 ],
+				[ 4, 7 ]
+			];
 			Console.WriteLine("Initial values of coordinatesA");
 			foreach (List<int> coordinates in coordinatesA)
 			{
@@ -132,13 +133,13 @@
 			Console.WriteLine();
 
 			// A list of any defined type including your own
-			List<DateTime> holidayDates = new List<DateTime>();
+			List<DateTime> holidayDates = [];
 			holidayDates.Add(new DateTime(2023, 12, 24));
 			holidayDates.Add(new DateTime(2023, 01, 01));
 			Console.WriteLine("Holiday dates: " + string.Join(", ", holidayDates));
 
 			// A list of Tuples (a light weight data structure)             
-			List<(int X, int Y)> coordinatesB = new List<(int X, int Y)>();
+			List<(int X, int Y)> coordinatesB = [];
 			coordinatesB.Add((1, 3));
 			coordinatesB.Add((X: 2, Y: 3));
 			Console.WriteLine("Coordinates are:" + string.Join(",", coordinatesB));
@@ -148,7 +149,7 @@
 		// Using Lists
 		public static void UsingLists()
 		{
-			List<int> numbers = new List<int> { 4, 6, 8, 12, 9 };
+			List<int> numbers = [ 4, 6, 8, 12, 9 ];
 			numbers.Insert(1, 2);
 			numbers.RemoveAt(4);
 			numbers.Reverse();
@@ -164,16 +165,16 @@
 			List<int> doubled = numbers.Select(num => num * 2).ToList();
 			Console.WriteLine(string.Join(",", doubled));
 
-			List<string> names = new List<string> { "apple", "plum", "carrot", "sprout" };
+			List<string> names = [ "apple", "plum", "carrot", "sprout" ];
 			names.Sort();
 			Console.WriteLine(string.Join(",", names));
 
 			// Convert list to array
-			string[] arrayNames = names.ToArray();
+			string[] arrayNames = [.. names];
 			Console.WriteLine("Names as an array: " + string.Join(",", names));
 
 			// Convert array to list
-			int[] moreNumbers = new[] { 12, 66, 77, 22, 14 };
+			int[] moreNumbers = [ 12, 66, 77, 22, 14 ];
 			List<int> moreNumberList = moreNumbers.Where(num => num > 20).ToList();
 			Console.WriteLine("Numbers as a list: " + string.Join(",", moreNumberList));
 		}

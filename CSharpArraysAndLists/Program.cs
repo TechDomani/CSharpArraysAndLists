@@ -7,7 +7,7 @@
 			ArraysAndLists.SimpleIntArray();
 			ArraysAndLists.SimpleStringArray();
 
-			double[] array = new [] { 3.2, 19.4, 12.2 }; // Creates an array with initial values set
+			double[] array = [3.2, 19.4, 12.2]; // Creates an array with initial values set
 			Console.WriteLine("Initial values: " + string.Join(", ", array));
 			ArraysAndLists.ArraysAreReferenceTypes(array);
 			Console.WriteLine("Values now: " + string.Join(", ", array));
